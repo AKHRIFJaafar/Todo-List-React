@@ -38,6 +38,7 @@ class App extends React.Component {
   addTask(e) {
     
     
+    
      if (addInput.value.length != 0) {
       this.state.tasksArray.push({
         value: addInput.value,
