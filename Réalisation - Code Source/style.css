@@ -1,31 +1,79 @@
 * {
-    font-family: 'Open Sans', sans-serif;
-  }
-  h1 { font-size: 24px }
-  form { margin-bottom: 20px }
-  i { font-style: normal }
+  font-family: 'Open Sans', sans-serif;
+}
+h1 { font-size: 24px ; text-align: center; color:#000; font-weight: 700;}
+form { margin-bottom: 20px }
+i { font-style: normal }
+
+
+.task {
+  color: #000;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px auto;
+  color: #fff;
+}
+.task:hover {
+  cursor: pointer;
+  opacity: .90;
+}
+.task p:last-child { margin-bottom: 0 }
+.task+.task { margin-top: -5px }
+.task-success {
+  background: linear-gradient(
+    90deg,
+    rgb(75, 189, 132) 0%,
+    rgb(110, 211, 115) 100%
+  );  ;
+  text-decoration: line-through;
+  font-style: italic;
+  border-radius: 25px;
+  margin: 0 0 20px;
+}
+.task-info {
+  background: linear-gradient(
+    90deg,
+    rgb(55, 185, 245) 0%,
+    rgb(11, 32, 230) 100%
+  );
+  border-radius: 25px;
+  margin: 0 0 20px;
+}
+
+.form-control {
+  padding: 24px  !important;
+  border-radius: 25px;
+  border: 2px solid linear;
+  outline: none;
+  width: 320px;
+  background: transparent;
+  color:#000;
   
-  .task {
-    color: #616161;
-    padding: 20px;
-    border-left: 5px solid #eee;
-  }
-  .task:hover {
-    cursor: pointer;
-    opacity: .64;
-  }
-  .task p:last-child { margin-bottom: 0 }
-  .task+.task { margin-top: -5px }
-  .task-success {
-    background-color: #E8F5E9;
-    border-left-color: #4CAF50;
-    text-decoration: line-through;
-    font-style: italic;
-  }
-  .task-info {
-    background-color: #E1F5FE;
-    border-left-color: #03A9F4;
-  }
-  .text-white{
-    color: white;
-  }
+}
+
+.form-control::placeholder{
+  color:#000 ;
+}
+.btn-default {
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    rgb(98, 97, 100) 0%,
+    rgb(12, 6, 15) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+}
+i.close {
+  float: right;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  opacity: 100%;
+}
