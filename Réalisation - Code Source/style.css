@@ -72,8 +72,7 @@ i { font-style: normal }
 i.close {
   float: right;
   font-size: 21px;
-  font-weight: 700;
+  font-weight: bolder;
   line-height: 1;
   color: #fff;
-  opacity: 100%;
 }
