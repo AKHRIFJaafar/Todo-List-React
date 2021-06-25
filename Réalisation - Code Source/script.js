@@ -12,7 +12,7 @@ class Task extends React.Component {
     return (
       <div className={class_name} onClick={this.props.onClickTask}>
         <span>{this.props.value}</span>
-        <i className="close" onClick={this.props.onClickClose}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+        <i className="close" onClick={this.props.onClickClose}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
 </svg></i>
       </div>
@@ -26,33 +26,40 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      tasksArray: [
-        {value: 'To do list', done: true},
-        {value: 'Site E-comerce Wordpress', done: false},
-        {value: 'Site Ville Wordpress', done: false}
-      ],
-      value: ''
-    }
+       tasksArray: []
+    };
   }
+  componentDidMount() {
+    this.chargementDonnees();
+  }
+  chargementDonnees(){
 
+    var tasksArray = null;
+    
+    // affichage de données par Ajax
+
+    $.getJSON( "api/getTasks.php", 
+    function( data ) {
+      this.setState({ tasksArray: data});
+    }.bind(this))
+    .fail(function(jqXHR, textStatus, errorThrown) {
+       console.log(errorThrown);
+   });
+  }
+  //add Task
   addTask(e) {
-    
-    
-    
-     if (addInput.value.length != 0) {
-      this.state.tasksArray.push({
-        value: addInput.value,
-        done: false
-      })
-      
-      
-      this.setState(state => ({
-        tasksArray: state.tasksArray
-      }));
-
-    }
-
-    e.preventDefault()
+    $.ajax({
+      url:"/api/addTask.php",
+      method:"POST",
+      data:{
+          task_name : addInput.value ,
+      },
+      success:function(data) {
+        this.chargementDonnees()
+        console.log(data)
+    }.bind(this)
+    })
+    e.preventDefault();
   }
 
   removeTask(i) {
@@ -87,7 +94,7 @@ class App extends React.Component {
       return (
         <Task 
           key={i}
-          value={task.value}
+          value={task.task_name}
           done={task.done}
           onClickClose={this.removeTask.bind(this, i)}
           onClickTask={this.markDone.bind(this, i)}
