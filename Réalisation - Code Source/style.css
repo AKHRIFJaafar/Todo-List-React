@@ -1,3 +1,4 @@
+  
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 * {
@@ -13,7 +14,6 @@ i { font-style: normal }
   padding: 20px;
   display: flex;
   width: 45%;
-  color: #fff;
   margin: 20px;
 }
 .task:hover {
@@ -24,17 +24,13 @@ i { font-style: normal }
 .task-success {
   background: linear-gradient(
     90deg,
-    rgb(75, 189, 132) 0%,
-    rgb(110, 211, 115) 100%
+    rgb(145, 214, 226) 0%,
+    rgb(85, 74, 233) 100%
   );
   text-decoration: line-through;
   font-style: italic;}
 .task-info {
-  background: linear-gradient(
-    90deg,
-    rgb(55, 185, 245) 0%,
-    rgb(11, 32, 230) 100%
-  );
+background-color: bisque;
 }
 
 .form-control {
@@ -71,15 +67,13 @@ i { font-style: normal }
   color: #fff;
   text-transform: capitalize;
 }
-i.close {
+.close {
   float: right;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: bolder;
   line-height: 1;
-  color: #fff;
+  color: #000;
 }
-
-
 .just{
   display: flex;
   flex-wrap: wrap;
